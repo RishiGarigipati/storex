@@ -1,0 +1,36 @@
+graph TD;
+    classDef greenBox fill:#4CAF50,stroke:#4CAF50,color:white,rx:10,ry:10;
+    classDef whiteCircle fill:white,stroke:#4CAF50,color:black,rx:50,ry:50;
+    classDef grayCircle fill:#f5f5f5,stroke:#e0e0e0,color:black,rx:50,ry:50;
+    classDef dataBox fill:#f5f5f5,stroke:#4CAF50,color:black,rx:10,ry:10;
+    classDef iconBox fill:white,stroke:#e0e0e0,color:black;
+    classDef dotLine stroke:#4CAF50,stroke-dasharray:5;
+
+    A["Data Input<br>Request with Azure"] -.-> |"..."| B["Storage Providers<br>Bid to Store Data"];
+    B:::greenBox -.-> |">>>"| C["Data is Fragmented,<br>Encrypted and Stored"];
+    C:::iconBox -.-> |">>>"| D["Client Given the<br>Only Existing Access Key"];
+    D:::whiteCircle;
+
+    E["Azure Blockchain<br>Infrastructure"] -.-> |"<<<"| F["Storage providers are<br>paid through Azure"];
+    F:::iconBox;
+    
+    G["Storage Hardware Requires<br>Performance Components<br><small>HDDs, CPUs, GPUs, SSDs,<br>Azure Confidential Computing</small>"] --> B;
+    G:::greenBox;
+    
+    C --> H["Data is Recorded in the<br>Azure Confidential Ledger"];
+    H:::dataBox;
+    
+    H --> I["Storage Power Requires<br>Scaling Storage<br><small>RAM, High#45;Density HDDs, SDDs,<br>and Azure infrastructure</small>"];
+    I:::greenBox;
+    
+    H --> J["Data Retrieval Requires<br>Powerful Processors<br><small>GPUs, CPUs and Azure<br>computing resources</small>"];
+    J:::greenBox;
+    
+    J -.-> |">>>"| K["Retrieval Provider<br>Retrieves Data"];
+    K:::iconBox -.-> |">>>"| L;
+    
+    M["Data Retrieval<br>Request"] --> N["Client Sends<br>Request to the Quickest<br>Retrieval Provider"];
+    N:::whiteCircle -.-> |"..."| L["Data Returned<br>to Client"];
+    L:::grayCircle;
+    
+    I --> N;
